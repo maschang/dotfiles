@@ -1,0 +1,126 @@
+# LANG
+export LANG=ja_JP.UTF-8
+
+# Editor
+export EDITOR="cursor --wait"
+
+# Prompt
+PROMPT='ʕ◕ᴥ◕ʔ [%n@%m] %~ %# '
+
+# Completion
+autoload -U compinit; compinit
+
+# direnv
+eval "$(direnv hook $0)"
+
+# Deduplicate PATH
+typeset -U path cdpath fpath manpath
+
+# Sudoers path
+typeset -xT SUDO_PATH sudo_path
+typeset -U sudo_path
+sudo_path=({/usr/local,/usr,}/sbin(N-/))
+
+# PATH
+export PATH=/usr/local/bin:$PATH
+export PATH="$HOME/.local/bin:$PATH"
+path=(~/bin(N-/) /usr/local/bin(N-/) ${path})
+
+# History
+HISTFILE=~/.zsh_history
+HISTSIZE=100000
+SAVEHIST=1000000
+setopt hist_ignore_dups
+setopt share_history
+
+# Emacs-like keybinds (Ctrl-a, Ctrl-e, etc.)
+bindkey -e
+
+# Options
+setopt auto_pushd
+setopt correct
+setopt list_packed
+setopt nolistbeep
+setopt no_beep
+
+# Aliases
+alias la='ls -a'
+alias ll='ls -alF'
+alias rm='rm -i'
+alias cp='cp -i'
+alias mv='mv -i'
+alias mkdir='mkdir -p'
+alias sudo='sudo '
+
+alias g='git '
+alias t='tig '
+alias glp='git log -p'
+alias gbl='git blame'
+alias gd='git diff'
+alias gbr='git branch'
+alias gs='git status'
+alias gst='git stash'
+alias ga='git add -A'
+alias gac='git add -A && git commit -m'
+alias gci='git commit'
+alias gco='git checkout'
+alias gnew='git checkout -b'
+alias gre='git rebase -i'
+alias gp='git pull'
+alias gl="git log --graph --pretty=format:'%Cred%h%Creset %an: %s - %Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"
+alias gg='git grep -ne'
+
+# fzf
+## History search (Ctrl+R)
+function fzf-history-selection() {
+    BUFFER=$(history -n 1 | tail -r | awk '!a[$0]++' | fzf --query "$LBUFFER")
+    CURSOR=$#BUFFER
+    zle reset-prompt
+}
+zle -N fzf-history-selection
+bindkey '^R' fzf-history-selection
+
+## cdr directory search (Ctrl+T)
+if [[ -n $(echo ${^fpath}/chpwd_recent_dirs(N)) && -n $(echo ${^fpath}/cdr(N)) ]]; then
+    autoload -Uz chpwd_recent_dirs cdr add-zsh-hook
+    add-zsh-hook chpwd chpwd_recent_dirs
+    zstyle ':completion:*' recent-dirs-insert both
+    zstyle ':chpwd:*' recent-dirs-default true
+    zstyle ':chpwd:*' recent-dirs-max 1000
+    zstyle ':chpwd:*' recent-dirs-file "$HOME/.cache/chpwd-recent-dirs"
+fi
+
+function fzf-cdr() {
+    local selected_dir="$(cdr -l | sed -E 's/^[0-9]+ +//' | fzf --prompt="cdr > " --query "$LBUFFER")"
+    if [ -n "$selected_dir" ]; then
+        BUFFER="cd ${selected_dir}"
+        zle accept-line
+    fi
+}
+zle -N fzf-cdr
+bindkey '^T' fzf-cdr
+
+## Find and cd into directory
+function find_cd() {
+    cd "$(find . -type d | fzf)"
+}
+alias c="find_cd"
+
+## Find and open file in cursor
+function find_edit() {
+    cursor "$(find . -type f | fzf)"
+}
+alias v="find_edit"
+
+## ghq + fzf repository navigation
+alias repo='cd $(ghq list -p | fzf)'
+
+# zsh-completions
+if [ -e /opt/homebrew/share/zsh-completions ]; then
+    fpath=(/opt/homebrew/share/zsh-completions $fpath)
+elif [ -e /usr/local/share/zsh-completions ]; then
+    fpath=(/usr/local/share/zsh-completions $fpath)
+fi
+
+# Starship
+eval "$(starship init zsh)"

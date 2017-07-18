@@ -1,0 +1,14 @@
+[user]
+	email = kyohei.masuda@icloud.com
+	name = maschang
+[core]
+	editor = cursor --wait
+	excludesfile = ~/.gitignore
+[color]
+	ui = auto
+[fetch]
+	prune = true
+[init]
+	defaultBranch = main
+[pull]
+	rebase = true

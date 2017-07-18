@@ -1,0 +1,109 @@
+{
+    "vim.easymotion": true,
+    "vim.sneak": true,
+    "vim.incsearch": true,
+    "vim.useSystemClipboard": true,
+    "vim.useCtrlKeys": true,
+    "vim.hlsearch": true,
+    "vim.insertModeKeyBindings": [
+        {
+            "before": [
+                "j",
+                "j"
+            ],
+            "after": [
+                "<Esc>"
+            ]
+        }
+    ],
+    "vim.normalModeKeyBindingsNonRecursive": [
+        {
+            "before": [
+                "<leader>",
+                "d"
+            ],
+            "after": [
+                "d",
+                "d"
+            ]
+        },
+        {
+            "before": [
+                "<C-n>"
+            ],
+            "commands": [
+                ":nohl"
+            ]
+        }
+    ],
+    "vim.leader": "<space>",
+    "vim.handleKeys": {
+        "<C-a>": false,
+        "<C-f>": false
+    },
+    "ruby.useBundler": true,
+    "ruby.useLanguageServer": true,
+    "ruby.lint": {
+        "rubocop": {
+            "useBundler": true
+        },
+        "reek": {
+            "useBundler": true
+        }
+    },
+    "ruby.format": "rubocop",
+    "editor.tabSize": 2,
+    "solargraph.definitions": true,
+    "solargraph.diagnostics": true,
+    "solargraph.formatting": true,
+    "workbench.editor.showTabs": "multiple",
+    "[go]": {
+        "editor.tabSize": 4,
+        "editor.insertSpaces": true
+    },
+    "[javascript]": {
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.cursorStyle": "line",
+    "editor.lineNumbers": "on",
+    "editor.wordSeparators": "/\\()\"':,.;<>~!@#$%^&*|+=[]{}`?-",
+    "editor.wordWrap": "off",
+    "files.insertFinalNewline": true,
+    "editor.detectIndentation": false,
+    "explorer.confirmDelete": false,
+    "workbench.editor.enablePreview": false,
+    "editor.inlineSuggest.enabled": true,
+    "workbench.panel.defaultLocation": "right",
+    "terminal.integrated.copyOnSelection": true,
+    "terminal.integrated.fontWeight": "normal",
+    "workbench.colorCustomizations": {
+        "terminal.background": "#191919",
+        "terminal.foreground": "#A7A7A7",
+        "terminalCursor.background": "#A7A7A7",
+        "terminalCursor.foreground": "#A7A7A7",
+        "terminal.ansiBlack": "#191919",
+        "terminal.ansiBlue": "#639EE4",
+        "terminal.ansiBrightBlack": "#5F5A60",
+        "terminal.ansiBrightBlue": "#639EE4",
+        "terminal.ansiBrightCyan": "#4BB1A7",
+        "terminal.ansiBrightGreen": "#84B97C",
+        "terminal.ansiBrightMagenta": "#B888E2",
+        "terminal.ansiBrightRed": "#DC657D",
+        "terminal.ansiBrightWhite": "#FFFFFF",
+        "terminal.ansiBrightYellow": "#C3BA63",
+        "terminal.ansiCyan": "#4BB1A7",
+        "terminal.ansiGreen": "#84B97C",
+        "terminal.ansiMagenta": "#B888E2",
+        "terminal.ansiRed": "#DC657D",
+        "terminal.ansiWhite": "#A7A7A7",
+        "terminal.ansiYellow": "#C3BA63"
+    },
+    "window.zoomLevel": 2,
+    "window.commandCenter": true,
+    "cursor.cpp.disabledLanguages": [
+      "plaintext"
+    ]
+}

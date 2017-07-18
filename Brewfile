@@ -1,0 +1,11 @@
+brew "git"
+brew "gh"
+brew "ghq"
+brew "fzf"
+brew "jq"
+brew "tree"
+brew "tig"
+brew "starship"
+
+cask "iterm2"
+cask "wezterm@nightly"
