@@ -16,7 +16,7 @@ PROMPT='ʕ◕ᴥ◕ʔ [%n@%m] %~ %# '
 autoload -U compinit; compinit
 
 ## setup direnv
-#eval "$(direnv hook $0)"
+eval "$(direnv hook $0)"
 
 ## do not allow duplicate
 #
@@ -34,9 +34,20 @@ export PATH=/usr/local/bin:$PATH
 export PATH=/Users/maschang/.rbenv/shims:$PATH
 path=(~/bin(N-/) /usr/local/bin(N-/) ${path})
 
-## rbenv init
+export GOPATH=$HOME/go
+export PATH=$GOPATH/bin:$PATH
+export GOENV_ROOT=$HOME/.goenv
+export PATH=$GOENV_ROOT/bin:$PATH
+export PATH=$HOME/.goenv/bin:$PATH
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
+[ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+
+## init
 #
-# eval "$(rbenv init -)"
+eval "$(rbenv init -)"
+eval "$(goenv init -)"
 
 ## Command history configuration
 #
@@ -98,7 +109,7 @@ alias gci='git commit'
 alias gco='git checkout'
 alias gnew='git checkout -b'
 alias gre='git rebase -i'
-alias gp='git pull origin master --prune'
+alias gp='git pull'
 alias gl="git log --graph --pretty=format:'%Cred%h%Creset %an: %s - %Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"
 alias gg='git grep -ne'
 
@@ -167,3 +178,4 @@ alias hub_open='gh-open $(repos)'
 if [ -e /usr/local/share/zsh-completions ]; then
     fpath=(/usr/local/share/zsh-completions $fpath)
 fi
+export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
