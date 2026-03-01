@@ -20,3 +20,14 @@ map("n", "-", "<cmd>Oil<CR>")
 
 -- LSP (lspconfig の on_attach で設定)
 -- gd, gr, K 等は lua/plugins/init.lua 内で定義
+
+-- :q でバッファが残っていれば閉じて前のバッファを表示、なければ終了
+vim.api.nvim_create_user_command("Q", function()
+  local bufs = vim.fn.getbufinfo({ buflisted = 1 })
+  if #bufs > 1 then
+    vim.cmd("bprevious | bdelete #")
+  else
+    vim.cmd("quit")
+  end
+end, {})
+vim.cmd("cabbrev q Q")
