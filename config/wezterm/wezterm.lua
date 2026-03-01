@@ -42,6 +42,13 @@ config.colors = {
   tab_bar = {
     inactive_tab_edge = "none",
   },
+  split = "#6e6e6e",
+}
+
+-- 非アクティブペインを暗くする
+config.inactive_pane_hsb = {
+  saturation = 0.7,
+  brightness = 0.4,
 }
 
 -- タブの形をカスタマイズ
