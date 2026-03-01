@@ -2,16 +2,13 @@
 export LANG=ja_JP.UTF-8
 
 # Editor
-export EDITOR="cursor --wait"
+export EDITOR="nvim"
 
 # Prompt
 PROMPT='ʕ◕ᴥ◕ʔ [%n@%m] %~ %# '
 
 # Completion
 autoload -U compinit; compinit
-
-# direnv
-eval "$(direnv hook $0)"
 
 # Deduplicate PATH
 typeset -U path cdpath fpath manpath
@@ -51,6 +48,7 @@ alias cp='cp -i'
 alias mv='mv -i'
 alias mkdir='mkdir -p'
 alias sudo='sudo '
+alias vim='nvim'
 
 alias g='git '
 alias t='tig '

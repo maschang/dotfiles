@@ -50,6 +50,10 @@ echo "Linking Starship settings..."
 mkdir -p "$HOME/.config"
 link_file "$DOTFILES_DIR/config/starship/starship.toml" "$HOME/.config/starship.toml"
 
+# config/nvim/ → ~/.config/nvim/ (ディレクトリごとリンク)
+echo "Linking Neovim settings..."
+link_file "$DOTFILES_DIR/config/nvim" "$HOME/.config/nvim"
+
 # config/cursor/ → ~/Library/Application Support/Cursor/User/
 CURSOR_DIR="$HOME/Library/Application Support/Cursor/User"
 if [ -d "$CURSOR_DIR" ] || [ -d "$(dirname "$CURSOR_DIR")" ]; then

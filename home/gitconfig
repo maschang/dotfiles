@@ -2,7 +2,7 @@
 	email = kyohei.masuda@icloud.com
 	name = maschang
 [core]
-	editor = cursor --wait
+	editor = nvim
 	excludesfile = ~/.gitignore
 [color]
 	ui = auto
