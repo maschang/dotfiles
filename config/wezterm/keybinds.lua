@@ -75,6 +75,9 @@ return {
     -- 画面フルスクリーン切り替え
     { key = "Enter", mods = "ALT", action = act.ToggleFullScreen },
 
+    -- Shift+Enterで改行（Claude Code等で使用）
+    { key = "Enter", mods = "SHIFT", action = act.SendString("\x1b[13;2u") },
+
     -- コピーモード
     -- { key = 'X', mods = 'LEADER', action = act.ActivateKeyTable{ name = 'copy_mode', one_shot =false }, },
     { key = "[", mods = "LEADER", action = act.ActivateCopyMode },
