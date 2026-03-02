@@ -10,5 +10,9 @@ brew "neovim"
 brew "ripgrep"
 brew "ruby-lsp"
 
+cask "clipy"
+cask "docker"
 cask "iterm2"
 cask "wezterm@nightly"
+
+cask "font-jetbrains-mono-nerd-font"
