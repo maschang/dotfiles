@@ -15,4 +15,5 @@ cask "docker"
 cask "iterm2"
 cask "wezterm@nightly"
 
+cask "hammerspoon"
 cask "font-jetbrains-mono-nerd-font"

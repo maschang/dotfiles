@@ -79,6 +79,22 @@ cask "visual-studio-code"  # GUI アプリ
 
 `home/zshrc` を直接編集する。
 
+## シェルキーバインド（fzf）
+
+| キー | 機能 |
+|---|---|
+| `Ctrl+R` | コマンド履歴を fzf で検索 |
+| `Ctrl+T` | 最近訪問したディレクトリを fzf で検索して cd |
+| `Ctrl+F` | カレント以下のディレクトリを fzf で検索して cd |
+
+### エイリアス
+
+| エイリアス | 機能 |
+|---|---|
+| `c` | ディレクトリを検索して cd（`Ctrl+F` と同等） |
+| `v` | ファイルを検索して Cursor で開く |
+| `repo` | ghq リポジトリを検索して cd |
+
 ### Claude Code
 
 `make link` で `home/claude/` → `~/.claude` にシンボリックリンクされる。

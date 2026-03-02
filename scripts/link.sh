@@ -54,6 +54,10 @@ link_file "$DOTFILES_DIR/config/starship/starship.toml" "$HOME/.config/starship.
 echo "Linking Neovim settings..."
 link_file "$DOTFILES_DIR/config/nvim" "$HOME/.config/nvim"
 
+# config/hammerspoon/ → ~/.hammerspoon/
+echo "Linking Hammerspoon settings..."
+link_file "$DOTFILES_DIR/config/hammerspoon" "$HOME/.hammerspoon"
+
 # config/cursor/ → ~/Library/Application Support/Cursor/User/
 CURSOR_DIR="$HOME/Library/Application Support/Cursor/User"
 if [ -d "$CURSOR_DIR" ] || [ -d "$(dirname "$CURSOR_DIR")" ]; then

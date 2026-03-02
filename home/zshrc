@@ -98,11 +98,17 @@ function fzf-cdr() {
 zle -N fzf-cdr
 bindkey '^T' fzf-cdr
 
-## Find and cd into directory
+## Find and cd into directory (Ctrl+F / alias c)
 function find_cd() {
-    cd "$(find . -type d | fzf)"
+    local selected_dir="$(find . -type d | fzf --prompt="cd > " --query "$LBUFFER")"
+    if [ -n "$selected_dir" ]; then
+        BUFFER="cd ${selected_dir}"
+        zle accept-line
+    fi
 }
-alias c="find_cd"
+zle -N find_cd
+bindkey '^F' find_cd
+alias c="cd \"\$(find . -type d | fzf)\""
 
 ## Find and open file in cursor
 function find_edit() {
