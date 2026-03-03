@@ -70,7 +70,46 @@ return {
     "lewis6991/gitsigns.nvim",
     event = "BufReadPre",
     config = function()
-      require("gitsigns").setup()
+      require("gitsigns").setup({
+        current_line_blame = true,
+        current_line_blame_opts = {
+          delay = 300,
+          virt_text = false,
+        },
+        current_line_blame_formatter = "<abbrev_sha> <author>, <author_time:%Y-%m-%d> - <summary>",
+      })
+    end,
+  },
+
+  -- Lualine: ステータスライン
+  {
+    "nvim-lualine/lualine.nvim",
+    event = "VimEnter",
+    dependencies = { "nvim-tree/nvim-web-devicons", "lewis6991/gitsigns.nvim" },
+    config = function()
+      local function git_blame()
+        local blame = vim.b.gitsigns_blame_line_dict
+        if not blame or blame.author == nil then
+          return ""
+        end
+        if blame.author == "Not Committed Yet" then
+          return "Not Committed Yet"
+        end
+        local hash = string.sub(blame.sha, 1, 7)
+        local date = os.date("%Y-%m-%d", blame.author_time)
+        return string.format("%s %s, %s - %s", hash, blame.author, date, blame.summary)
+      end
+
+      require("lualine").setup({
+        sections = {
+          lualine_a = { "mode" },
+          lualine_b = { "branch" },
+          lualine_c = { "filename" },
+          lualine_x = { git_blame },
+          lualine_y = { "filetype" },
+          lualine_z = { "location" },
+        },
+      })
     end,
   },
 
