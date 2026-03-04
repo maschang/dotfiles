@@ -23,6 +23,7 @@ return {
       { "<leader>fg", "<cmd>Telescope live_grep<cr>",  desc = "Live grep" },
       { "<leader>fb", "<cmd>Telescope buffers<cr>",     desc = "Buffers" },
       { "<leader>fh", "<cmd>Telescope help_tags<cr>",   desc = "Help tags" },
+      { "<leader>fs", "<cmd>Telescope git_status<cr>",  desc = "Git status" },
     },
     dependencies = { "nvim-lua/plenary.nvim" },
     config = function()
