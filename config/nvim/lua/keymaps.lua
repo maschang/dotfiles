@@ -32,12 +32,13 @@ end, { desc = "Copy absolute file path" })
 -- gd, gr, K 等は lua/plugins/init.lua 内で定義
 
 -- :q でバッファが残っていれば閉じて前のバッファを表示、なければ終了
-vim.api.nvim_create_user_command("Q", function()
+vim.api.nvim_create_user_command("Q", function(opts)
   local bufs = vim.fn.getbufinfo({ buflisted = 1 })
+  local bang = opts.bang and "!" or ""
   if #bufs > 1 then
-    vim.cmd("bprevious | bdelete #")
+    vim.cmd("bprevious | bdelete" .. bang .. " #")
   else
-    vim.cmd("quit")
+    vim.cmd("quit" .. bang)
   end
-end, {})
+end, { bang = true })
 vim.cmd("cabbrev q Q")
