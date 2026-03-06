@@ -20,13 +20,13 @@ map("n", "-", "<cmd>Oil<CR>")
 
 -- ファイルパスをクリップボードにコピー
 map("n", "<leader>cp", function()
-  vim.fn.setreg("+", vim.fn.expand("%:p"))
-  vim.notify("Copied: " .. vim.fn.expand("%:p"))
-end, { desc = "Copy absolute file path" })
-map("n", "<leader>cP", function()
   vim.fn.setreg("+", vim.fn.expand("%:."))
   vim.notify("Copied: " .. vim.fn.expand("%:."))
 end, { desc = "Copy relative file path" })
+map("n", "<leader>cP", function()
+  vim.fn.setreg("+", vim.fn.expand("%:p"))
+  vim.notify("Copied: " .. vim.fn.expand("%:p"))
+end, { desc = "Copy absolute file path" })
 
 -- LSP (lspconfig の on_attach で設定)
 -- gd, gr, K 等は lua/plugins/init.lua 内で定義
