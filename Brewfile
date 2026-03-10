@@ -9,6 +9,8 @@ brew "starship"
 brew "neovim"
 brew "ripgrep"
 brew "ruby-lsp"
+brew "awscli"
+cask "session-manager-plugin"
 
 cask "clipy"
 cask "docker"
