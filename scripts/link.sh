@@ -36,6 +36,10 @@ for file in "$DOTFILES_DIR"/home/claude/*; do
   link_file "$file" "$HOME/.claude/$name"
 done
 
+# home/zsh/ → ~/.zsh/
+echo "Linking zsh settings..."
+link_file "$DOTFILES_DIR/home/zsh" "$HOME/.zsh"
+
 # config/wezterm/ → ~/.config/wezterm/
 echo "Linking WezTerm settings..."
 mkdir -p "$HOME/.config/wezterm"
