@@ -67,50 +67,6 @@ alias gre='git rebase -i'
 alias gp='git pull'
 alias gl="git log --graph --pretty=format:'%Cred%h%Creset %an: %s - %Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"
 alias gg='git grep -ne'
-function decaf() {
-  caffeinate -d &
-  local pid=$!
-  trap "kill $pid 2>/dev/null; trap - INT; return" INT
-
-  local steam1=(
-    "       (  )"
-    "      (    )"
-    "       (  )"
-    "      (    )"
-  )
-  local steam2=(
-    "      (    )"
-    "       (  )"
-    "      (    )"
-    "       (  )"
-  )
-  local cup=(
-    "      .-----."
-    "      |     |}"
-    "      |     |}"
-    "      \`-----'"
-    "     \\_______/"
-    "   ~~~~~~~~~~~"
-  )
-
-  local i=0
-  while kill -0 $pid 2>/dev/null; do
-    clear
-    echo ""
-    echo ""
-    if (( i % 2 == 0 )); then
-      for line in "${steam1[@]}"; do echo "$line"; done
-    else
-      for line in "${steam2[@]}"; do echo "$line"; done
-    fi
-    for line in "${cup[@]}"; do echo "$line"; done
-    echo ""
-    echo "   \033[36m~ decaf mode ~\033[0m"
-    echo "   \033[2mCtrl+C to stop\033[0m"
-    ((i++))
-    sleep 0.8
-  done
-}
 
 # fzf
 ## History search (Ctrl+R)
