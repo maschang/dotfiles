@@ -36,6 +36,11 @@ for file in "$DOTFILES_DIR"/home/claude/*; do
   link_file "$file" "$HOME/.claude/$name"
 done
 
+# home/claude/skills/ → ~/.claude/skills/ (ディレクトリごとリンク)
+if [ -d "$DOTFILES_DIR/home/claude/skills" ]; then
+  link_file "$DOTFILES_DIR/home/claude/skills" "$HOME/.claude/skills"
+fi
+
 # home/zsh/ → ~/.zsh/
 echo "Linking zsh settings..."
 link_file "$DOTFILES_DIR/home/zsh" "$HOME/.zsh"
