@@ -12,5 +12,8 @@
       "Bash(wget *)"
     ]
   },
-  "language": "日本語"
+  "language": "日本語",
+  "enabledPlugins": {
+    "ruby-lsp@claude-plugins-official": true
+  }
 }
