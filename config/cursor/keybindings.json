@@ -13,5 +13,10 @@
       "key": "tab",
       "command": "-editor.action.acceptCursorTabSuggestion",
       "when": "cpp.shouldAcceptTab"
+    },
+    {
+      "key": "alt+cmd+s",
+      "command": "workbench.action.toggleUnifiedSidebarFromKeyboard",
+      "when": "cursor.agentIdeUnification.enabled == true && !isAuxiliaryWindowFocusedContext"
     }
 ]
