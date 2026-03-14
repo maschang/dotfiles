@@ -87,7 +87,7 @@ return {
     { key = "v", mods = "SUPER", action = act.PasteFrom("Clipboard") },
 
     -- 縦分割 Cmd + d
-    { key = "d", mods = "SUPER", action = act.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
+    { key = "d", mods = "SUPER", action = act.SplitPane({ direction = "Right", size = { Percent = 40 } }) },
     -- 横分割 Cmd + Shift + d
     { key = "d", mods = "SUPER|SHIFT", action = act.SplitVertical({ domain = "CurrentPaneDomain" }) },
     -- Paneを閉じる Cmd + w
