@@ -1,0 +1,6 @@
+# Chrome extensions to install from GitHub (unpacked mode)
+# One repository URL per line
+# Example:
+# https://github.com/maschang/my-extension
+
+https://github.com/maschang/BasicAuthn

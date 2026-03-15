@@ -16,6 +16,9 @@ iterm2: ## [手動] iTerm2 カラースキームを読み込み
 	done
 	@echo "iTerm2: select the color preset in Preferences > Profiles > Colors"
 
+chrome: ## [手動] Chrome 拡張機能をインストール / 更新
+	@bash $(DOTFILES_DIR)/scripts/chrome.sh
+
 cursor-extensions: ## [手動] Cursor 拡張機能をインストール
 	@echo "Installing Cursor extensions..."
 	@while IFS= read -r ext || [ -n "$$ext" ]; do \
